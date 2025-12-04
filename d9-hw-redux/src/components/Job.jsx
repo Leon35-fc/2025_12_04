@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addToFavouriteAction, removeFromFavouriteAction } from '../redux/actions'
 
 const Job = ({ data }) => {
-  const favourites = useSelector((state) => state.favourite.list)
+  const favourites = useSelector((state) => state.list)
   const dispatch = useDispatch()
 
   const isFav = favourites.includes(data.company_name)
 
-  console.log(favourites);
+  console.log('Favourites',favourites);
   
 
   return (
