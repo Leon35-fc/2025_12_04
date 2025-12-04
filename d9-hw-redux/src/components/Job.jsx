@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom'
 import { Star, StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToFavouriteAction, removeFromFavouriteAction } from '../redux/actions'
-
+import store from '../redux/store'
 const Job = ({ data }) => {
   const favourites = useSelector((state) => state.list)
   const dispatch = useDispatch()
+  
+  console.log('company', data);
+  
+  console.log('Favourites', favourites);
 
   const isFav = favourites.includes(data.company_name)
-
-  console.log('Favourites',favourites);
   
 
   return (
