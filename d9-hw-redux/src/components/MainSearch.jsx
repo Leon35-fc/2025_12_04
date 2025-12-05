@@ -31,11 +31,6 @@ const MainSearch = () => {
     }
   }
 
-  console.log('query', query,
-              'jobs', jobs,
-  );
-  
-
   return (
     <Container>
       <Row>

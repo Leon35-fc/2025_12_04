@@ -2,41 +2,41 @@ import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Star, StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToFavouriteAction, removeFromFavouriteAction } from '../redux/actions'
-import store from '../redux/store'
+
 const Job = ({ data }) => {
-  const favourites = useSelector((state) => state.list)
+  const favourites = useSelector((state) => state.favourite.list)
   const dispatch = useDispatch()
-  
-  console.log('company', data);
-  
-  console.log('Favourites', favourites);
 
   const isFav = favourites.includes(data.company_name)
-  
 
   return (
     <Row
       className="mx-0 mt-3 p-3"
       style={{ border: '1px solid #00000033', borderRadius: 4 }}
     >
-      <Col xs={3}>
+      <Col xs={3} className=''>
         {isFav ? (
           <StarFill
             color="gold"
-            size={20}
+            size={18}
             className="me-2 my-auto"
             onClick={() =>
-              dispatch(removeFromFavouriteAction(data.company_name))
+              dispatch({
+                type: 'REMOVE_FROM_FAVOURITE',
+                payload: data.company_name,
+              })
             }
           />
         ) : (
           <Star
             color="gold"
-            size={20}
+            size={18}
             className="me-2 my-auto"
             onClick={() =>
-              dispatch(addToFavouriteAction(data.company_name))
+              dispatch({
+                type: 'ADD_TO_FAVOURITE',
+                payload: data.company_name,
+              })
             }
           />
         )}
